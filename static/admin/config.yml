@@ -1,0 +1,16 @@
+backend:
+  name: github
+  branch: master
+  repo: dean-whippoorwill/gatsby-template
+
+media_folder: static/img
+public_folder: /img
+
+collections:
+  - name: 'products'
+    label: 'Products'
+    folder: 'src/products'
+    create: true
+    slug: '{{slug}}'
+    fields:
+      - { label: 'Product Name', name: 'title', widget: 'string' }
