@@ -53,5 +53,6 @@ module.exports = {
       },
     },
     'gatsby-plugin-svg-sprite',
+    'gatsby-plugin-netlify', // MUST BE LAST ITEM IN ARRAY
   ],
 };
