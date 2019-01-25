@@ -51,10 +51,14 @@ const ColumnRight = styled.div`
   align-items: center;
   justify-content: center;
   button {
+    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     transform: rotate(90deg);
     background: transparent;
     border: none;
     cursor: pointer;
+  }
+  button:hover {
+    transform: scale(1.3) rotate(90deg);
   }
   @media (max-width: 599px) {
     display: none;
@@ -65,10 +69,15 @@ const SocialLinks = styled.div`
   display: flex;
   padding-right: 24px;
   div {
+    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    cursor: pointer;
     margin-left: 12px;
     @media (max-width: 599px) {
       margin-left: 24px;
     }
+  }
+  div:hover {
+    transform: scale(1.2);
   }
 `;
 
