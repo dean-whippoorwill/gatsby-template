@@ -30,7 +30,7 @@ const ColumnLeft = styled.div`
   flex-wrap: nowrap;
   justify-content: space-between;
   align-items: center;
-  height: 70px;
+  height: 100%;
   ul {
     display: block;
   }
