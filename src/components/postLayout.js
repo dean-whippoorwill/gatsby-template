@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { graphql } from 'gatsby';
 import Layout from './layout';
+import Archive from './archive';
 
 class postLayout extends Component {
   state = {};
@@ -10,6 +11,7 @@ class postLayout extends Component {
       <Layout>
         <h1>{markdownRemark.frontmatter.title}</h1>
         <div dangerouslySetInnerHTML={{ __html: markdownRemark.html }} />
+        <Archive />
       </Layout>
     );
   }
