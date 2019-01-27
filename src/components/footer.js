@@ -8,6 +8,7 @@ import arrowIcon from '../images/arrow.svg';
 import templateLogo from '../images/template-logo.png';
 
 const FooterWrapper = styled.div`
+  position: relative;
   height: 70px;
   background: #2699fb;
   color: white;
