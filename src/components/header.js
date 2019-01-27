@@ -186,7 +186,7 @@ class Header extends Component {
           </HeaderLeft>
           <HeaderRight>
             <Link to="/">
-              CART [{this.state.cartItems}]
+              CART
               <svg
                 style={{
                   height: '24px',
