@@ -8,19 +8,24 @@ public_folder: /img
 
 collections:
   - name: 'products'
-    label: 'Products'
+    label: 'Product'
     folder: 'src/products'
     create: true
     slug: '{{slug}}'
     fields:
       - { label: 'Product Name', name: 'title', widget: 'string' }
-      - { label: 'Path URL', name: 'slug', widget: 'string' }
-      - label: 'Post Time'
-        name: 'date'
-        widget: 'datetime'
-        format: 'YYYY-MM-DD'
-        dateFormat: 'true'
-      - { label: 'Blog post content', name: 'body', widget: 'markdown' }
+      - label: 'Product Price'
+        name: 'price'
+        widget: 'number'
+        valueType: 'float'
+      - { label: 'Description', name: 'description', widget: 'text' }
+      - label: 'Category'
+        name: 'category'
+        widget: 'select'
+        options:
+          - { value: 'Gadgets', label: 'Gadgets' }
+          - { value: 'Gizmos', label: 'Gizmos' }
+          - { value: 'Doo-dads', label: 'Doo-dads' }
   - name: 'posts'
     label: 'Blog Post'
     folder: 'src/posts'
