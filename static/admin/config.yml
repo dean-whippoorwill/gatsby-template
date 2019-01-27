@@ -14,3 +14,24 @@ collections:
     slug: '{{slug}}'
     fields:
       - { label: 'Product Name', name: 'title', widget: 'string' }
+      - { label: 'Path URL', name: 'slug', widget: 'string' }
+      - label: 'Post Time'
+        name: 'date'
+        widget: 'datetime'
+        format: 'YYYY-MM-DD'
+        dateFormat: 'true'
+      - { label: 'Blog post content', name: 'body', widget: 'markdown' }
+  - name: 'posts'
+    label: 'Blog Post'
+    folder: 'src/posts'
+    create: true
+    slug: '{{slug}}'
+    fields:
+      - { label: 'Post Title', name: 'title', widget: 'string' }
+      - { label: 'Path URL', name: 'slug', widget: 'string' }
+      - label: 'Post Time'
+        name: 'date'
+        widget: 'datetime'
+        format: 'YYYY-MM-DD'
+        dateFormat: 'true'
+      - { label: 'Blog post content', name: 'body', widget: 'markdown' }

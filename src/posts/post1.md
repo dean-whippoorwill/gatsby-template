@@ -1,6 +1,6 @@
 ---
-slug: '/first-post'
-date: '2019-01-05'
+slug: /first-post
+date: 2019-01-05
 title: 'First Post'
 ---
 

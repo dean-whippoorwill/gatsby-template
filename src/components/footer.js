@@ -114,7 +114,7 @@ class Footer extends Component {
           </Link>
 
           <div>
-            <p>COPYRIGHT WHIPPOORWILL DESIGN CO, 2019</p>
+            <p>© WHIPPOORWILL DESIGN CO, {new Date().getFullYear()}</p>
           </div>
           <SocialLinks>
             <div>
