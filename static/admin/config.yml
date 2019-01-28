@@ -14,6 +14,12 @@ collections:
     slug: '{{slug}}'
     fields:
       - { label: 'Product Name', name: 'title', widget: 'string' }
+      - {
+          label: 'Collection',
+          name: 'collection',
+          widget: 'hidden',
+          default: 'products',
+        }
       - label: 'Product Price'
         name: 'price'
         widget: 'number'
@@ -33,6 +39,12 @@ collections:
     slug: '{{slug}}'
     fields:
       - { label: 'Post Title', name: 'title', widget: 'string' }
+      - {
+          label: 'Collection',
+          name: 'collection',
+          widget: 'hidden',
+          default: 'posts',
+        }
       - { label: 'Path URL', name: 'slug', widget: 'string' }
       - label: 'Post Time'
         name: 'date'
