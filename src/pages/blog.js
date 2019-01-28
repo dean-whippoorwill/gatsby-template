@@ -13,6 +13,7 @@ class Blog extends Component {
         allMarkdownRemark(
           limit: 10
           sort: { order: DESC, fields: [frontmatter___date] }
+          filter: { frontmatter: { collection: { eq: "posts" } } }
         ) {
           edges {
             node {
