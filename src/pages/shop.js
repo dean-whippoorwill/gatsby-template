@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Layout from '../components/layout';
-import { Link } from 'gatsby';
+import { Link, StaticQuery, graphql } from 'gatsby';
 import Select from 'react-select';
 import styled from 'styled-components';
 
@@ -77,6 +77,24 @@ class Shop extends Component {
       { value: 'Gizmos', label: 'Gizmos' },
       { value: 'Doo-dads', label: 'Doo-dads' },
     ];
+    const PRODUCT_QUERY = graphql`
+      query Products {
+        allMarkdownRemark(
+          filter: { frontmatter: { collection: { eq: "products" } } }
+        ) {
+          edges {
+            node {
+              frontmatter {
+                title
+                price
+                description
+                category
+              }
+            }
+          }
+        }
+      }
+    `;
     return (
       <Layout>
         <ShopWrapper>
@@ -137,6 +155,30 @@ class Shop extends Component {
                 <a href="#">VIEW ITEM</a>
               </ProductInfo>
             </ProductCard>
+            <StaticQuery
+              query={PRODUCT_QUERY}
+              render={({ allMarkdownRemark }) =>
+                allMarkdownRemark.edges.map(({ node }) => (
+                  <ProductCard
+                    isVisible={
+                      this.state.selectedOption.value ===
+                      node.frontmatter.category
+                    }
+                    // isVisible={true}
+                  >
+                    <ProductImage />
+                    <ProductInfo>
+                      <h4>
+                        {node.frontmatter.title}
+                        <span>${node.frontmatter.price}</span>
+                      </h4>
+                      <p>{node.frontmatter.description}</p>
+                      <a href="#">VIEW ITEM</a>
+                    </ProductInfo>
+                  </ProductCard>
+                ))
+              }
+            />
           </ProductCards>
         </ShopWrapper>
       </Layout>

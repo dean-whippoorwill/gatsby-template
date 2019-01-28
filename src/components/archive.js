@@ -6,6 +6,7 @@ const POST_ARCHIVE_QUERY = graphql`
     allMarkdownRemark(
       limit: 5
       sort: { order: DESC, fields: [frontmatter___date] }
+      filter: { frontmatter: { collection: { eq: "posts" } } }
     ) {
       edges {
         node {
