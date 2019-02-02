@@ -182,7 +182,7 @@ class Header extends Component {
             <Link to="/shop">SHOP</Link>
             <Link to="/blog">BLOG</Link>
             <Link to="/about">ABOUT</Link>
-            <Link to="/">CONTACT</Link>
+            <Link to="/contact">CONTACT</Link>
           </HeaderLeft>
           <HeaderRight>
             <Link to="/">
