@@ -95,28 +95,30 @@ class Blog extends Component {
       <BlogWrapper>
         <Header />
         <BlogContent>
-          <StaticQuery
-            query={PREVIEW_QUERY}
-            render={({ allMarkdownRemark }) =>
-              allMarkdownRemark.edges.map(({ node }) => (
-                <PostPreview key={node.frontmatter.slug}>
-                  <PostImage />
-                  <PreviewText>
-                    <Link to={`/posts/${node.frontmatter.slug}`}>
-                      <h1>{node.frontmatter.title}</h1>
-                    </Link>
-                    <p>{node.frontmatter.date}</p>
-                    <p>
-                      {node.excerpt}...
+          <div>
+            <StaticQuery
+              query={PREVIEW_QUERY}
+              render={({ allMarkdownRemark }) =>
+                allMarkdownRemark.edges.map(({ node }) => (
+                  <PostPreview key={node.frontmatter.slug}>
+                    <PostImage />
+                    <PreviewText>
                       <Link to={`/posts/${node.frontmatter.slug}`}>
-                        <strong>READ POST</strong>
+                        <h1>{node.frontmatter.title}</h1>
                       </Link>
-                    </p>
-                  </PreviewText>
-                </PostPreview>
-              ))
-            }
-          />
+                      <p>{node.frontmatter.date}</p>
+                      <p>
+                        {node.excerpt}...
+                        <Link to={`/posts/${node.frontmatter.slug}`}>
+                          <strong>READ POST</strong>
+                        </Link>
+                      </p>
+                    </PreviewText>
+                  </PostPreview>
+                ))
+              }
+            />
+          </div>
         </BlogContent>
         <Footer />
       </BlogWrapper>
