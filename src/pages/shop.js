@@ -5,7 +5,7 @@ import Select from 'react-select';
 import styled from 'styled-components';
 
 const ShopWrapper = styled.div`
-  padding: 0 12px 0 36px;
+  padding: 0 36px;
   color: #2699fb;
 `;
 const Category = styled.div`

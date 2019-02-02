@@ -95,48 +95,28 @@ class Blog extends Component {
       <BlogWrapper>
         <Header />
         <BlogContent>
-          <div>
-            <PostPreview>
-              <PostImage />
-              <PreviewText>
-                <Link to="/">
-                  <h1>Blog Post Title</h1>
-                </Link>
-                <p>January 7, 2019</p>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-                  do eiusmod tempor incididunt ut ero labore et dolore magna
-                  aliqua. Ut enim ad minim veniam, quis...
-                  <Link to="/">
-                    <strong>READ POST</strong>
-                  </Link>
-                </p>
-              </PreviewText>
-            </PostPreview>
-
-            <StaticQuery
-              query={PREVIEW_QUERY}
-              render={({ allMarkdownRemark }) =>
-                allMarkdownRemark.edges.map(({ node }) => (
-                  <PostPreview key={node.frontmatter.slug}>
-                    <PostImage />
-                    <PreviewText>
+          <StaticQuery
+            query={PREVIEW_QUERY}
+            render={({ allMarkdownRemark }) =>
+              allMarkdownRemark.edges.map(({ node }) => (
+                <PostPreview key={node.frontmatter.slug}>
+                  <PostImage />
+                  <PreviewText>
+                    <Link to={`/posts/${node.frontmatter.slug}`}>
+                      <h1>{node.frontmatter.title}</h1>
+                    </Link>
+                    <p>{node.frontmatter.date}</p>
+                    <p>
+                      {node.excerpt}...
                       <Link to={`/posts/${node.frontmatter.slug}`}>
-                        <h1>{node.frontmatter.title}</h1>
+                        <strong>READ POST</strong>
                       </Link>
-                      <p>{node.frontmatter.date}</p>
-                      <p>
-                        {node.excerpt}...
-                        <Link to={`/posts/${node.frontmatter.slug}`}>
-                          <strong>READ POST</strong>
-                        </Link>
-                      </p>
-                    </PreviewText>
-                  </PostPreview>
-                ))
-              }
-            />
-          </div>
+                    </p>
+                  </PreviewText>
+                </PostPreview>
+              ))
+            }
+          />
         </BlogContent>
         <Footer />
       </BlogWrapper>
