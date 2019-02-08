@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import Layout from '../components/layout';
 import { Link, StaticQuery, graphql } from 'gatsby';
 import Select from 'react-select';
 import styled from 'styled-components';
+import Layout from '../components/layout';
+import ProductCardComponent from '../components/productCard';
 
 const ShopWrapper = styled.div`
   padding: 0 36px;
@@ -28,33 +29,6 @@ const CategorySelect = styled(Select)`
 const ProductCards = styled.div`
   display: flex;
   flex-wrap: wrap;
-`;
-
-const ProductCard = styled.div`
-  width: 360px;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-  margin: 0 24px 36px 0;
-  display: ${props => (props.isVisible ? 'initial' : 'none')};
-`;
-const ProductImage = styled.div`
-  background: #7fc4fd;
-  height: 200px;
-`;
-const ProductInfo = styled.div`
-  padding: 24px 30px;
-  width: 100%;
-  span {
-    float: right;
-  }
-  p,
-  a {
-    font-size: 14px;
-  }
-  a {
-    color: #2699fb;
-    text-decoration: none;
-    font-weight: 600;
-  }
 `;
 
 class Shop extends Component {
@@ -110,73 +84,43 @@ class Shop extends Component {
             </div>
           </Category>
           <ProductCards>
-            <ProductCard
-              isVisible={this.state.selectedOption.value === options[0].value}
-            >
-              <ProductImage />
-              <ProductInfo>
-                <h4>
-                  Gadget<span>$42</span>
-                </h4>
-                <p>
-                  Excepteur sint occaecat cupidatat non proident, sunt in culpa
-                  qui officia deserunt{' '}
-                </p>
-                <a href="#">VIEW ITEM</a>
-              </ProductInfo>
-            </ProductCard>
-            <ProductCard
-              isVisible={this.state.selectedOption.value === options[1].value}
-            >
-              <ProductImage />
-              <ProductInfo>
-                <h4>
-                  Gizmo<span>$42</span>
-                </h4>
-                <p>
-                  Excepteur sint occaecat cupidatat non proident, sunt in culpa
-                  qui officia deserunt{' '}
-                </p>
-                <a href="#">VIEW ITEM</a>
-              </ProductInfo>
-            </ProductCard>
-            <ProductCard
-              isVisible={this.state.selectedOption.value === options[2].value}
-            >
-              <ProductImage />
-              <ProductInfo>
-                <h4>
-                  Doodad<span>$42</span>
-                </h4>
-                <p>
-                  Excepteur sint occaecat cupidatat non proident, sunt in culpa
-                  qui officia deserunt{' '}
-                </p>
-                <a href="#">VIEW ITEM</a>
-              </ProductInfo>
-            </ProductCard>
             <StaticQuery
               query={PRODUCT_QUERY}
               render={({ allMarkdownRemark }) =>
-                allMarkdownRemark.edges.map(({ node }) => (
-                  <ProductCard
-                    isVisible={
-                      this.state.selectedOption.value ===
-                      node.frontmatter.category
+                allMarkdownRemark.edges.map(({ node }) => {
+                  // <ProductCard
+                  //   isVisible={
+                  //     this.state.selectedOption.value ===
+                  //     node.frontmatter.category
+                  //   }
+                  //   // isVisible={true}
+                  // >
+                  //   <ProductImage />
+                  //   <ProductInfo>
+                  //     <h4>
+                  //       {node.frontmatter.title}
+                  //       <span>${node.frontmatter.price}</span>
+                  //     </h4>
+                  //     <p>{node.frontmatter.description}</p>
+                  //     <a href="#">VIEW ITEM</a>
+                  //   </ProductInfo>
+                  // </ProductCard>
+                  for (let option in options) {
+                    if (
+                      node.frontmatter.category === options[option].value &&
+                      this.state.selectedOption.value == options[option].value
+                    ) {
+                      return (
+                        <ProductCardComponent
+                          key={node.frontmatter.title}
+                          title={node.frontmatter.title}
+                          price={node.frontmatter.price}
+                          description={node.frontmatter.description}
+                        />
+                      );
                     }
-                    // isVisible={true}
-                  >
-                    <ProductImage />
-                    <ProductInfo>
-                      <h4>
-                        {node.frontmatter.title}
-                        <span>${node.frontmatter.price}</span>
-                      </h4>
-                      <p>{node.frontmatter.description}</p>
-                      <a href="#">VIEW ITEM</a>
-                    </ProductInfo>
-                  </ProductCard>
-                ))
+                  }
+                })
               }
             />
           </ProductCards>
