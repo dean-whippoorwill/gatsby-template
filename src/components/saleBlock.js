@@ -8,14 +8,31 @@ const SaleWrapper = styled.div`
   height: 576px;
   display: grid;
   grid-template-columns: 1fr 1fr;
+  width: 100vw;
   @media (max-width: 599px) {
     grid-template-columns: 1fr;
-    height: 760px;
+    height: 400px;
   }
   color: white;
 `;
 
 const Column = styled.div`
+  svg {
+    height: 428px;
+    width: 369px;
+  }
+  @media (max-width: 599px) {
+    width: 100vw;
+    height: 400px;
+    svg {
+      width: 90%;
+      opacity: 0.4;
+    }
+    position: ${props => (props.top === true ? 'absolute' : 'relative')};
+    justify-self: center;
+    align-self: center;
+    text-align: center;
+  }
   justify-content: center;
   align-items: center;
   height: 100%;
@@ -28,6 +45,13 @@ const Column = styled.div`
   @media (max-width: 599px) {
     div {
       margin: 12px 0 18px;
+      height: 70%;
+      div {
+        height: 50%;
+      }
+    }
+    h1 {
+      margin-bottom: 0;
     }
   }
   h1 {
@@ -57,15 +81,13 @@ const SaleBlock = () => {
       <Column>
         <svg
           style={{
-            height: '428px',
-            width: '369px',
             verticalAlign: '-25%',
           }}
         >
           <use xlinkHref={`#${placeholderImage.id}`} />
         </svg>
       </Column>
-      <Column>
+      <Column top={true}>
         <div>
           <div>
             <h1>It's that time of year again</h1>

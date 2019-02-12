@@ -12,6 +12,9 @@ const ShopWrapper = styled.div`
 const Category = styled.div`
   display: grid;
   grid-template-columns: 1fr 360px;
+  @media (max-width: 599px) {
+    grid-template-columns: 1fr;
+  }
   h1 {
     margin-bottom: 0;
     align-self: end;
@@ -88,23 +91,6 @@ class Shop extends Component {
               query={PRODUCT_QUERY}
               render={({ allMarkdownRemark }) =>
                 allMarkdownRemark.edges.map(({ node }) => {
-                  // <ProductCard
-                  //   isVisible={
-                  //     this.state.selectedOption.value ===
-                  //     node.frontmatter.category
-                  //   }
-                  //   // isVisible={true}
-                  // >
-                  //   <ProductImage />
-                  //   <ProductInfo>
-                  //     <h4>
-                  //       {node.frontmatter.title}
-                  //       <span>${node.frontmatter.price}</span>
-                  //     </h4>
-                  //     <p>{node.frontmatter.description}</p>
-                  //     <a href="#">VIEW ITEM</a>
-                  //   </ProductInfo>
-                  // </ProductCard>
                   for (let option in options) {
                     if (
                       node.frontmatter.category === options[option].value &&

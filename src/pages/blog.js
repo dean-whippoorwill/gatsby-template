@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link, StaticQuery, graphql } from 'gatsby';
 import styled from 'styled-components';
+import Layout from '../components/layout';
 import Header from '../components/header';
 import Footer from '../components/footer';
 
@@ -41,7 +42,6 @@ class Blog extends Component {
       justify-content: center;
       height: 100%;
       min-height: calc(100vh - 150px);
-      padding: 24px 0 48px;
     `;
     const PostPreview = styled.div`
       height: 208px;
@@ -92,36 +92,36 @@ class Blog extends Component {
       }
     `;
     return (
-      <BlogWrapper>
-        <Header />
-        <BlogContent>
-          <div>
-            <StaticQuery
-              query={PREVIEW_QUERY}
-              render={({ allMarkdownRemark }) =>
-                allMarkdownRemark.edges.map(({ node }) => (
-                  <PostPreview key={node.frontmatter.slug}>
-                    <PostImage />
-                    <PreviewText>
-                      <Link to={`/posts/${node.frontmatter.slug}`}>
-                        <h1>{node.frontmatter.title}</h1>
-                      </Link>
-                      <p>{node.frontmatter.date}</p>
-                      <p>
-                        {node.excerpt}...
+      <Layout>
+        <BlogWrapper>
+          <BlogContent>
+            <div>
+              <StaticQuery
+                query={PREVIEW_QUERY}
+                render={({ allMarkdownRemark }) =>
+                  allMarkdownRemark.edges.map(({ node }) => (
+                    <PostPreview key={node.frontmatter.slug}>
+                      <PostImage />
+                      <PreviewText>
                         <Link to={`/posts/${node.frontmatter.slug}`}>
-                          <strong>READ POST</strong>
+                          <h1>{node.frontmatter.title}</h1>
                         </Link>
-                      </p>
-                    </PreviewText>
-                  </PostPreview>
-                ))
-              }
-            />
-          </div>
-        </BlogContent>
-        <Footer />
-      </BlogWrapper>
+                        <p>{node.frontmatter.date}</p>
+                        <p>
+                          {node.excerpt}...
+                          <Link to={`/posts/${node.frontmatter.slug}`}>
+                            <strong>READ POST</strong>
+                          </Link>
+                        </p>
+                      </PreviewText>
+                    </PostPreview>
+                  ))
+                }
+              />
+            </div>
+          </BlogContent>
+        </BlogWrapper>
+      </Layout>
     );
   }
 }
