@@ -7,6 +7,8 @@ const Contact = () => {
     display: grid;
     grid-template-columns: 1fr 1fr;
     color: #2699fb;
+    width: 100vw;
+    word-break: break-word;
     label {
       font-size: 12px;
       font-weight: 700;
@@ -23,6 +25,7 @@ const Contact = () => {
     @media (max-width: 599px) {
       justify-self: stretch;
       padding: 0 32px;
+      width: 100%;
     }
     width: 70%;
     input,
@@ -46,6 +49,9 @@ const Contact = () => {
     @media (max-width: 599px) {
       justify-self: stretch;
       padding: 0 32px;
+      iframe {
+        width: calc(100vw - 64px);
+      }
     }
   `;
   return (
@@ -66,7 +72,10 @@ const Contact = () => {
         </LeftColumn>
         <RightColumn>
           <label>Hours</label>
-          <p>Monday-Friday 10am-8pm, Saturday 10am-6pm</p>
+          <p>
+            Monday-Friday 10am-8pm <br />
+            Saturday 10am-6pm
+          </p>
           <label>Phone</label>
           <p>(555) 555 - 5555</p>
           <label>EMAIL</label>

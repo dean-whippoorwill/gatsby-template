@@ -13,7 +13,7 @@ import SEO from '../components/seo';
 
 const IndexPage = () => {
   return (
-    <div>
+    <div style={{ overflow: 'hidden' }}>
       <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
       <Header />
       <Carousel />

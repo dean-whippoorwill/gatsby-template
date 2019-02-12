@@ -9,6 +9,7 @@ const Carousel = () => {
   let reactSwipeEl;
   const CarouselWrapper = styled.div`
     max-height: 600px;
+    margin-top: -24px;
     height: 100%;
     overflow: hidden;
     position relative;
@@ -30,6 +31,9 @@ const Carousel = () => {
     transform: ${props => props.right && 'scaleX(-1)'};
     filter: ${props => props.right && 'FlipH'};
     cursor: pointer;
+    @media (max-width: 599px) {
+      display: none;
+    }
   `;
 
   return (

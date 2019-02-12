@@ -12,7 +12,9 @@ const LayoutWrapper = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
-  overflow: scroll;
+  width: 100vw;
+  overflow-y: scroll;
+  overflow: hidden;
 `;
 const PageBody = styled.div`
   postion: relative;
@@ -20,6 +22,8 @@ const PageBody = styled.div`
   height: 100%;
   min-height: calc(100vh - 150px);
   padding: 24px 0 48px;
+  width: 100vw;
+  overflow-x: hidden;
 `;
 
 const Layout = ({ children }) => (

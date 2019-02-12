@@ -12,6 +12,9 @@ class postLayout extends Component {
       grid-template-columns: 80fr 20fr;
       padding: 0 36px;
       color: #2699fb;
+      @media (max-width: 599px) {
+        grid-template-columns: 1fr;
+      }
     `;
 
     const { markdownRemark } = this.props.data;

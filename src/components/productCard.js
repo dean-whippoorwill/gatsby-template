@@ -6,6 +6,9 @@ const ProductWrapper = styled.div`
   width: 360px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   margin: 0 24px 36px 0;
+  @media (max-width: 599px) {
+    margin: 0 0 36px 0;
+  }
 `;
 const ProductImage = styled.div`
   background: #7fc4fd;

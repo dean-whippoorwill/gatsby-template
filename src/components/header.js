@@ -18,10 +18,14 @@ class Header extends Component {
   }
   componentDidMount() {
     document.addEventListener('mousedown', this.handleClickOutside);
+    document.body.style.position = 'initial';
   }
 
   componentWillUnmount() {
     document.removeEventListener('mousedown', this.handleClickOutside);
+    this.setState({
+      menuIsOpen: 'init',
+    });
   }
 
   setWrapperRef(node) {
@@ -52,7 +56,7 @@ class Header extends Component {
     const NavLinks = styled.div`
       @media (max-width: 599px) {
         opacity: ${props => (props.isOpen === 'init' ? '0' : '1')};
-        pointer-events: ${props => (props.isOpen === 'init' ? 'none' : 'auto')};
+        pointer-events: ${props => (props.isOpen === true ? 'auto' : 'none')};
         position: absolute;
         width: 200px;
         top: 0;
@@ -70,7 +74,7 @@ class Header extends Component {
         a {
           margin: 0 0 16px 16px;
         }
-        z-index: 10;
+        z-index: 13;
       }
       @media (min-width: 600px) {
         width: 100%;
@@ -215,6 +219,7 @@ class Header extends Component {
     this.setState({
       menuIsOpen: true,
     });
+    document.body.style.position = 'fixed';
   }
   handleClickOutside = e => {
     if (this.wrapperRef && !this.wrapperRef.contains(e.target)) {
@@ -222,6 +227,7 @@ class Header extends Component {
         this.setState({
           menuIsOpen: false,
         });
+        document.body.style.position = 'initial';
       }
     }
   };

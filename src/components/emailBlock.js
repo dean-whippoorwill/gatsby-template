@@ -32,6 +32,18 @@ const EmailBlockContent = styled.div`
   button:hover {
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   }
+  @media (max-width: 599px) {
+    width: 80%;
+    input {
+      width: calc(100% - 104px);
+      border-radius: 4px 0 0 4px;
+    }
+    button {
+      margin-left: 0;
+      padding: 14px 14px 16px;
+      border-radius: 0 4px 4px 0;
+    }
+  }
 `;
 
 const EmailBlock = () => {

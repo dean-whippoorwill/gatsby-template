@@ -22,6 +22,10 @@ const BrandSummaryContent = styled.div`
   h1 {
     font-family: serif;
   }
+  @media (max-width: 599px) {
+    height: 70%;
+    width: 70%;
+  }
 `;
 
 const BrandSummary = () => {
