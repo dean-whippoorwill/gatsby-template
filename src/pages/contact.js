@@ -2,58 +2,59 @@ import React from 'react';
 import Layout from '../components/layout';
 import styled from 'styled-components';
 
-const Contact = () => {
-  const ContactWrapper = styled.div`
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+const ContactWrapper = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  color: #2699fb;
+  width: 100vw;
+  word-break: break-word;
+  label {
+    font-size: 12px;
+    font-weight: 700;
+    margin-top: 20px;
+    text-transform: uppercase;
+  }
+  @media (max-width: 599px) {
+    grid-template-columns: 1fr;
+  }
+`;
+const LeftColumn = styled.div`
+  padding-right: 36px;
+  justify-self: end;
+  @media (max-width: 599px) {
+    justify-self: stretch;
+    padding: 0 32px;
+    width: 100%;
+  }
+  width: 70%;
+  input,
+  label {
+    display: block;
+  }
+  input,
+  textarea {
+    width: 100%;
+    border: 1px solid #bce0fd;
     color: #2699fb;
-    width: 100vw;
-    word-break: break-word;
-    label {
-      font-size: 12px;
-      font-weight: 700;
-      margin-top: 20px;
-      text-transform: uppercase;
+    border-radius: 4px;
+    padding-left: 10px;
+  }
+  input {
+    height: 48px;
+  }
+`;
+const RightColumn = styled.div`
+  padding-top: 72px;
+  @media (max-width: 599px) {
+    justify-self: stretch;
+    padding: 0 32px;
+    iframe {
+      width: calc(100vw - 64px);
     }
-    @media (max-width: 599px) {
-      grid-template-columns: 1fr;
-    }
-  `;
-  const LeftColumn = styled.div`
-    padding-right: 36px;
-    justify-self: end;
-    @media (max-width: 599px) {
-      justify-self: stretch;
-      padding: 0 32px;
-      width: 100%;
-    }
-    width: 70%;
-    input,
-    label {
-      display: block;
-    }
-    input,
-    textarea {
-      width: 100%;
-      border: 1px solid #bce0fd;
-      color: #2699fb;
-      border-radius: 4px;
-      padding-left: 10px;
-    }
-    input {
-      height: 48px;
-    }
-  `;
-  const RightColumn = styled.div`
-    padding-top: 72px;
-    @media (max-width: 599px) {
-      justify-self: stretch;
-      padding: 0 32px;
-      iframe {
-        width: calc(100vw - 64px);
-      }
-    }
-  `;
+  }
+`;
+
+const Contact = () => {
   return (
     <Layout>
       <ContactWrapper>

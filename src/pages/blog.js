@@ -2,8 +2,69 @@ import React, { Component } from 'react';
 import { Link, StaticQuery, graphql } from 'gatsby';
 import styled from 'styled-components';
 import Layout from '../components/layout';
-import Header from '../components/header';
-import Footer from '../components/footer';
+
+const BlogWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: scroll;
+`;
+const BlogContent = styled.div`
+  postion: relative;
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  min-height: calc(100vh - 150px);
+`;
+const PostPreview = styled.div`
+  height: 208px;
+  @media (max-width: 599px) {
+    height: 480px;
+  }
+  width: 86%;
+  margin: 24px auto 0;
+
+  display: grid;
+  grid-template-columns: 30fr 70fr;
+  @media (max-width: 599px) {
+    grid-template-columns: 1fr;
+  }
+`;
+const PostImage = styled.div`
+  @media (max-width: 599px) {
+    height: 280px;
+  }
+  background: #7fc4fd;
+  width: 100%;
+  height: 100%;
+`;
+const PreviewText = styled.div`
+  padding: 8px 20px 8px 16px;
+
+  color: #2699fb;
+  align-self: center;
+  > * {
+    :nth-child(2) {
+      margin-bottom: 16px;
+    }
+  }
+  p {
+    font-size: 14px;
+  }
+  h1 {
+    font-size: 32px;
+    font-family: serif;
+    margin-bottom: 6px;
+  }
+  a {
+    text-decoration: none;
+    color: #2699fb;
+  }
+  a:hover {
+    color: #0484f1;
+  }
+`;
 
 class Blog extends Component {
   state = {};
@@ -29,68 +90,7 @@ class Blog extends Component {
         }
       }
     `;
-    const BlogWrapper = styled.div`
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-      overflow: scroll;
-    `;
-    const BlogContent = styled.div`
-      postion: relative;
-      flex-grow: 1;
-      display: flex;
-      justify-content: center;
-      height: 100%;
-      min-height: calc(100vh - 150px);
-    `;
-    const PostPreview = styled.div`
-      height: 208px;
-      @media (max-width: 599px) {
-        height: 480px;
-      }
-      width: 86%;
-      margin: 24px auto 0;
 
-      display: grid;
-      grid-template-columns: 30fr 70fr;
-      @media (max-width: 599px) {
-        grid-template-columns: 1fr;
-      }
-    `;
-    const PostImage = styled.div`
-      @media (max-width: 599px) {
-        height: 280px;
-      }
-      background: #7fc4fd;
-      width: 100%;
-      height: 100%;
-    `;
-    const PreviewText = styled.div`
-      padding: 8px 20px 8px 16px;
-
-      color: #2699fb;
-      align-self: center;
-      > * {
-        :nth-child(2) {
-          margin-bottom: 16px;
-        }
-      }
-      p {
-        font-size: 14px;
-      }
-      h1 {
-        font-size: 32px;
-        font-family: serif;
-        margin-bottom: 6px;
-      }
-      a {
-        text-decoration: none;
-        color: #2699fb;
-      }
-      a:hover {
-        color: #0484f1;
-      }
-    `;
     return (
       <Layout>
         <BlogWrapper>

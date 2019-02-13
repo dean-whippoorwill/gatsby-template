@@ -5,9 +5,7 @@ import { StaticQuery, graphql } from 'gatsby';
 import styled from 'styled-components';
 import arrowIcon from '../images/arrow.svg';
 
-const Carousel = () => {
-  let reactSwipeEl;
-  const CarouselWrapper = styled.div`
+const CarouselWrapper = styled.div`
     max-height: 600px;
     margin-top: -24px;
     height: 100%;
@@ -17,25 +15,27 @@ const Carousel = () => {
         background: rgba(0, 0, 0, 0.4);
     }
   `;
-  const CarouselButton = styled.button`
-    background: rgba(0, 0, 0, 0.2);
-    transition: background-color 0.2s ease-in-out;
-    position: absolute;
-    color: white;
-    top: 50%;
-    margin-top: -24px;
-    padding: 16px;
-    z-index: 11;
-    border: none;
-    left: ${props => props.right && 'calc(100vw - 56px)'};
-    transform: ${props => props.right && 'scaleX(-1)'};
-    filter: ${props => props.right && 'FlipH'};
-    cursor: pointer;
-    @media (max-width: 599px) {
-      display: none;
-    }
-  `;
+const CarouselButton = styled.button`
+  background: rgba(0, 0, 0, 0.2);
+  transition: background-color 0.2s ease-in-out;
+  position: absolute;
+  color: white;
+  top: 50%;
+  margin-top: -24px;
+  padding: 16px;
+  z-index: 11;
+  border: none;
+  left: ${props => props.right && 'calc(100vw - 56px)'};
+  transform: ${props => props.right && 'scaleX(-1)'};
+  filter: ${props => props.right && 'FlipH'};
+  cursor: pointer;
+  @media (max-width: 599px) {
+    display: none;
+  }
+`;
 
+const Carousel = () => {
+  let reactSwipeEl;
   return (
     <StaticQuery
       query={graphql`
@@ -103,42 +103,5 @@ const Carousel = () => {
     />
   );
 };
-
-// const Layout = ({ children }) => {
-//     <StaticQuery
-//       query={graphql`
-//       query {
-//         file(relativePath: { regex: "/template-logo/" }) {
-//           childImageSharp {
-//             fluid(maxWidth: 1000) {
-//               ...GatsbyImageSharpFluid
-//             }
-//           }
-//         }
-//       }
-//       `}
-//       render={data => (
-//         <>
-//           <Header /> {/* siteTitle={data.site.siteMetadata.title} */}
-//           <div
-//             style={{
-//               margin: `0 auto`,
-//               maxWidth: 960,
-//               padding: `0px 1.0875rem 1.45rem`,
-//               paddingTop: 0,
-//             }}
-//           >
-//             {children}
-//             <Archive />
-//             <footer>
-//               © {new Date().getFullYear()}, Built with
-//               {` `}
-//               <a href="https://www.gatsbyjs.org">Gatsby</a>
-//             </footer>
-//           </div>
-//         </>
-//       )}
-//     />
-//         };
 
 export default Carousel;
