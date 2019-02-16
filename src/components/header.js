@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'gatsby';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import templateLogo from '../images/template-logo.png';
 import cartIcon from '../images/cart.svg';
 import hamburgerIcon from '../images/hamburger.svg';
@@ -27,7 +27,7 @@ const HeaderWrapper = styled.div`
 
 const NavLinks = styled.div`
   @media (max-width: 599px) {
-    opacity: ${props => (props.isOpen === 'init' ? '0' : '1')};
+    opacity: ${props => (props.isVisible ? '1' : '0')};
     pointer-events: ${props => (props.isOpen === true ? 'auto' : 'none')};
     position: absolute;
     width: 200px;
@@ -37,8 +37,8 @@ const NavLinks = styled.div`
     background: #7fc4fd;
     text-align: left;
     padding-top: 16px;
-    animation: ${props =>
-      props.isOpen ? ' menuIn .3s ease-in' : 'menuIn .3s reverse ease-out'};
+    animation: ${props => (props.isOpen ? menuIn : menuOut)};
+    animation-duration: 0.3s;
     box-shadow: ${props =>
       props.isOpen
         ? '0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22)'
@@ -68,6 +68,38 @@ const NavLinks = styled.div`
   }
 `;
 
+const menuIn = keyframes`
+0% {
+  left: 100vw;
+  box-shadow: none;
+}
+1% {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+    0 10px 10px rgba(0, 0, 0, 0.22);
+}
+100% {
+  left: calc(100vw - 200px);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+    0 10px 10px rgba(0, 0, 0, 0.22);
+}
+`;
+
+const menuOut = keyframes`
+100% {
+  left: 100vw;
+  box-shadow: none;
+}
+99% {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+    0 10px 10px rgba(0, 0, 0, 0.22);
+}
+0% {
+  left: calc(100vw - 200px);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+    0 10px 10px rgba(0, 0, 0, 0.22);
+}
+`;
+
 const HeaderLeft = styled.div`
   display: flex;
   width: 100%;
@@ -81,21 +113,6 @@ const HeaderLeft = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-  }
-  @keyframes menuIn {
-    0% {
-      left: 100vw;
-      box-shadow: none;
-    }
-    1% {
-      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
-        0 10px 10px rgba(0, 0, 0, 0.22);
-    }
-    100% {
-      left: calc(100vw - 200px);
-      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
-        0 10px 10px rgba(0, 0, 0, 0.22);
-    }
   }
 `;
 
@@ -140,8 +157,8 @@ class Header extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      menuIsOpen: 'init',
-      cartItems: 3,
+      drawerIsVisible: false,
+      menuIsOpen: false,
     };
     this.handleClickOutside = this.handleClickOutside.bind(this);
     this.handleHamburgerClick = this.handleHamburgerClick.bind(this);
@@ -181,7 +198,11 @@ class Header extends Component {
             }}
           />
         </Link>
-        <NavLinks isOpen={this.state.menuIsOpen} ref={this.setWrapperRef}>
+        <NavLinks
+          isOpen={this.state.menuIsOpen}
+          isVisible={this.state.drawerIsVisible}
+          ref={this.setWrapperRef}
+        >
           <HeaderLeft className="header-left">
             <Link to="/shop">SHOP</Link>
             <Link to="/blog">BLOG</Link>
@@ -218,6 +239,7 @@ class Header extends Component {
   handleHamburgerClick() {
     this.setState({
       menuIsOpen: true,
+      drawerIsVisible: true,
     });
     document.body.style.position = 'fixed';
   }
