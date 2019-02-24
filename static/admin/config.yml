@@ -45,10 +45,16 @@ collections:
           widget: 'hidden',
           default: 'posts',
         }
-      - { label: 'Path URL', name: 'slug', widget: 'string' }
+      - {
+          label: 'Path URL',
+          name: 'slug',
+          widget: 'string',
+          pattern: ['^[/]', 'Must begin with /'],
+        }
       - label: 'Post Time'
         name: 'date'
         widget: 'datetime'
         format: 'YYYY-MM-DD'
         dateFormat: 'true'
+        timeFormat: 'true'
       - { label: 'Blog post content', name: 'body', widget: 'markdown' }
