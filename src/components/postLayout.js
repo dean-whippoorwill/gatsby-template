@@ -8,7 +8,7 @@ const PostWrapper = styled.div`
   display: grid;
   grid-template-columns: 80fr 20fr;
   padding: 0 36px;
-  color: #2699fb;
+  color: ${props => props.theme.primaryColor};
   @media (max-width: 599px) {
     grid-template-columns: 1fr;
   }

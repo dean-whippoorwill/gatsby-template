@@ -15,7 +15,7 @@ const AboutWrapper = styled.div`
   @media (max-width: 599px) {
     grid-template-columns: 1fr;
   }
-  color: #2699fb;
+  color: ${props => props.theme.primaryColor};
 `;
 const LeftColumn = styled.div`
   @media (max-width: 599px) {
@@ -29,6 +29,9 @@ const RightColumn = styled.div`
     font-family: serif;
   }
   margin: 0 16px 0 56px;
+  svg {
+    fill: ${props => props.theme.primaryColor} !important;
+  }
 `;
 
 const About = () => (

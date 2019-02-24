@@ -1,10 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { StaticQuery, graphql } from 'gatsby';
-import styled from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
+import { lighten, darken } from 'polished';
 
 import Header from './header';
 import Footer from './footer';
+
+const themeVars = {
+  primaryColor: '#2699FB', // #2699FB
+};
+
+const theme = {
+  primaryColor: themeVars.primaryColor,
+  primaryLight: lighten(0.2, themeVars.primaryColor),
+  primaryLighter: lighten(0.4, themeVars.primaryColor),
+  primaryDark: darken(0.2, themeVars.primaryColor),
+};
 
 const LayoutWrapper = styled.div`
   display: flex;
@@ -36,11 +48,13 @@ const Layout = ({ children }) => (
       }
     `}
     render={data => (
-      <LayoutWrapper>
-        <Header /> {/* siteTitle={data.site.siteMetadata.title} */}
-        <PageBody>{children}</PageBody>
-        <Footer />
-      </LayoutWrapper>
+      <ThemeProvider theme={theme}>
+        <LayoutWrapper>
+          <Header /> {/* siteTitle={data.site.siteMetadata.title} */}
+          <PageBody>{children}</PageBody>
+          <Footer />
+        </LayoutWrapper>
+      </ThemeProvider>
     )}
   />
 );

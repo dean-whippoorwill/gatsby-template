@@ -5,7 +5,7 @@ import styled from 'styled-components';
 const ContactWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  color: #2699fb;
+  color: ${props => props.theme.primaryColor};
   width: 100vw;
   word-break: break-word;
   label {
@@ -34,8 +34,8 @@ const LeftColumn = styled.div`
   input,
   textarea {
     width: 100%;
-    border: 1px solid #bce0fd;
-    color: #2699fb;
+    border: 1px solid ${props => props.theme.primaryLight};
+    color: ${props => props.theme.primaryColor};
     border-radius: 4px;
     padding-left: 10px;
   }

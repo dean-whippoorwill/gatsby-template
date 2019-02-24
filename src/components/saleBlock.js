@@ -4,7 +4,7 @@ import placeholderImage from '../images/placeholderImage.svg';
 import { Link } from 'gatsby';
 
 const SaleWrapper = styled.div`
-  background: rgba(59, 162, 251, 0.6);
+  background: ${props => props.theme.primaryLight};
   height: 576px;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -63,7 +63,7 @@ const Column = styled.div`
     background: rgba(0, 0, 0, 0);
     border: 2px solid white;
     padding: 16px 16px;
-    color: #0883eb;
+    color: ${props => props.theme.primaryDark};
     border-radius: 4px;
     cursor: pointer;
     font-weight: 500;

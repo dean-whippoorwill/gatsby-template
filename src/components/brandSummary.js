@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const BrandSummaryWrapper = styled.div`
-  background: #2699fb;
+  background: ${props => props.theme.primaryColor};
   height: 380px;
   color: white;
   display: flex;
