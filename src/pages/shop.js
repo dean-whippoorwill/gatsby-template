@@ -32,6 +32,7 @@ const CategorySelect = styled(Select)`
   }
   div.react-select__option--is-focused {
     background: ${props => props.theme.primaryLighter};
+    color: ${props => props.theme.primaryLight};
   }
   div.react-select__single-value {
     color: ${props => props.theme.primaryLight};
