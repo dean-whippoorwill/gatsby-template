@@ -7,7 +7,7 @@ import hamburgerIcon from '../images/hamburger.svg';
 
 const HeaderWrapper = styled.div`
   position: relative;
-  background: #2699fb;
+  background: ${props => props.theme.primaryColor};
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   z-index: 11;
   display: flex;
@@ -34,7 +34,7 @@ const NavLinks = styled.div`
     top: 0;
     left: ${props => (props.isOpen ? 'calc(100vw - 200px)' : '100vw')};
     height: 100vh;
-    background: #7fc4fd;
+    background: ${props => props.theme.primaryLight};
     text-align: left;
     padding-top: 16px;
     animation: ${props => (props.isOpen ? menuIn : menuOut)};

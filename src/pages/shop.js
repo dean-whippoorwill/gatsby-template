@@ -7,7 +7,7 @@ import ProductCardComponent from '../components/productCard';
 
 const ShopWrapper = styled.div`
   padding: 0 36px;
-  color: #2699fb;
+  color: ${props => props.theme.primaryColor};
 `;
 const Category = styled.div`
   display: grid;
@@ -24,8 +24,17 @@ const Category = styled.div`
 
 const CategorySelect = styled(Select)`
   padding-top: 2px;
-  div.css-xp4uvy {
-    color: #2699fb;
+  div.react-select__control {
+    border: 1px solid ${props => props.theme.primaryLight};
+  }
+  div.react-select__option--is-selected {
+    background: ${props => props.theme.primaryColor};
+  }
+  div.react-select__option--is-focused {
+    background: ${props => props.theme.primaryLighter};
+  }
+  div.react-select__single-value {
+    color: ${props => props.theme.primaryLight};
   }
 `;
 
@@ -83,6 +92,15 @@ class Shop extends Component {
                 value={selectedOption}
                 onChange={this.handleChange}
                 options={options}
+                className="react-select-container"
+                classNamePrefix="react-select"
+                // theme={theme => ({
+                //   ...theme,
+                //   colors: {
+                //     ...theme.colors,
+                //     // primary: this.props.theme.primaryColor,
+                //   },
+                // })}
               />
             </div>
           </Category>

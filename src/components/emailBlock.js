@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const EmailBlockWrapper = styled.div`
   height: 380px;
-  color: #2699fb;
+  color: ${props => props.theme.primaryColor};
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -13,13 +13,13 @@ const EmailBlockWrapper = styled.div`
 const EmailBlockContent = styled.div`
   text-align: left;
   input {
-    border: 1px solid #bce0fd;
+    border: 1px solid ${props => props.theme.primaryLight};
     border-radius: 4px;
     padding: 11px 16px 12px;
-    color: #2699fb;
+    color: ${props => props.theme.primaryColor};
   }
   button {
-    background: #0883eb;
+    background: ${props => props.theme.primaryDark};
     border: none;
     border-radius: 4px;
     padding: 14px 16px 16px;

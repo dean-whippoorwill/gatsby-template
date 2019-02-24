@@ -26,7 +26,7 @@ const ArchiveWrapper = styled.aside`
     list-style: none;
     margin-left: 0;
     a {
-      color: #2699fb;
+      color: ${props => props.theme.primaryColor};
       text-decoration: none;
     }
   }

@@ -35,14 +35,14 @@ const PostImage = styled.div`
   @media (max-width: 599px) {
     height: 280px;
   }
-  background: #7fc4fd;
+  background: ${props => props.theme.primaryLight};
   width: 100%;
   height: 100%;
 `;
 const PreviewText = styled.div`
   padding: 8px 20px 8px 16px;
 
-  color: #2699fb;
+  color: ${props => props.theme.primaryColor};
   align-self: center;
   > * {
     :nth-child(2) {
@@ -59,7 +59,7 @@ const PreviewText = styled.div`
   }
   a {
     text-decoration: none;
-    color: #2699fb;
+    color: ${props => props.theme.primaryColor};
   }
   a:hover {
     color: #0484f1;

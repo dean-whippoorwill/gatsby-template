@@ -11,7 +11,7 @@ const ProductWrapper = styled.div`
   }
 `;
 const ProductImage = styled.div`
-  background: #7fc4fd;
+  background: ${props => props.theme.primaryLight};
   height: 200px;
 `;
 const ProductInfo = styled.div`
@@ -25,7 +25,7 @@ const ProductInfo = styled.div`
     font-size: 14px;
   }
   a {
-    color: #2699fb;
+    color: ${props => props.theme.primaryColor};
     text-decoration: none;
     font-weight: 600;
   }

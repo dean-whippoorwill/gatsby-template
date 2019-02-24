@@ -10,7 +10,7 @@ import templateLogo from '../images/template-logo.png';
 const FooterWrapper = styled.div`
   position: relative;
   height: 70px;
-  background: #2699fb;
+  background: ${props => props.theme.primaryColor};
   color: white;
   display: grid;
   grid-template-columns: 1fr 120px;
@@ -47,7 +47,7 @@ const ColumnLeft = styled.div`
   }
 `;
 const ColumnRight = styled.div`
-  background: #7fc4fd;
+  background: ${props => props.theme.primaryLight};
   display: flex;
   align-items: center;
   justify-content: center;
